@@ -3,21 +3,21 @@
 
     <item
         is-multidex="true"
-        jar="C:\Users\petre\Documents\GitHub\Colour\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jar="C:\Users\petre\StudioProjects\Colour\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="9d4d4dd021b6bab4a5203631246c21ac31add64f">
-        <dex dex="C:\Users\petre\Documents\GitHub\Colour\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_a41bc0202b70d36490f64ba3be0bd7c8570a4d87\classes.dex" />
+        sha1="2611feb376eb4f159bd5ced2f608ab895ca3e761">
+        <dex dex="C:\Users\petre\StudioProjects\Colour\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_39c9efb6488f1e687ed62fbbdaa5642aa0b50f7c\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\petre\Documents\GitHub\Colour\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jar="C:\Users\petre\StudioProjects\Colour\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
-        <dex dex="C:\Users\petre\Documents\GitHub\Colour\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_a0678661e1b3352196571bba908e23bb9fc8b709\classes.dex" />
+        <dex dex="C:\Users\petre\StudioProjects\Colour\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_cd72d5a2bdbe6d2a03d619cfcadb37da45895e81\classes.dex" />
     </item>
 
 </items>
