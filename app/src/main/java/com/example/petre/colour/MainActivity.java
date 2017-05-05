@@ -20,22 +20,16 @@ public class MainActivity extends AppCompatActivity {
         img = (ImageView) findViewById(R.id.circle);
 
         touchView.setOnTouchListener(new View.OnTouchListener() {
-
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                System.out.println(getSupportActionBar().getHeight() );
+                img.setY(event.getRawY() - getSupportActionBar().getHeight() - img.getHeight() / 2 - getStatusBarHeight());
+                img.setX(event.getRawX() - img.getWidth() / 2);
 
-
-               // Toast.makeText(MainActivity.this, "X" + event.getRawX() + " Width " + img.getWidth(), Toast.LENGTH_SHORT).show();
-                //if (((event.getRawX() - img.getWidth()/2) > sqr.getX()) && ((event.getRawX() - img.getWidth()/2 )> (sqr.getX()+ sqr.getWidth() ))) {
-               // if (event.getRawY() > sqr.getY() && event.getRawX() > sqr.getX()) {
-                   //if (event.getRawY() - img.getHeight()/2 > sqr.getY() && event.getRawY() - img.getHeight()/2 > sqr.getY()+ sqr.getHeight() ) {
-                        img.setY(event.getRawY() - getSupportActionBar().getHeight() - img.getHeight() / 2 - getStatusBarHeight());
-                        img.setX(event.getRawX() - img.getWidth() / 2);
-                 //   }
                 return true;
             }
         });
+
+
 
     }
 
