@@ -1,5 +1,10 @@
 package com.example.petre.colour;
 
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.Rect;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -15,8 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final View touchView = findViewById(R.id.full);
-       // sqr = (ImageView) findViewById(R.id.square);
+        View touchView = findViewById(R.id.full);
         img = (ImageView) findViewById(R.id.circle);
 
         touchView.setOnTouchListener(new View.OnTouchListener() {
