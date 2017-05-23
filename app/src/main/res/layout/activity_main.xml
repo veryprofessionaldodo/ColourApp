@@ -10,25 +10,38 @@
 
 
     <com.example.petre.colour.Square
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:id="@+id/square_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.376"
+        app:layout_constraintVertical_bias="0.326"
+        app:layout_constraintHorizontal_bias="0.50"
         />
     <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:id="@+id/triangle_outline"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/square_outline"
         android:src="@drawable/square_outline"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.376" />
+        app:layout_constraintVertical_bias="0.326"
+        app:layout_constraintHorizontal_bias="0.50" />
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:id="@+id/outer_wheel"
+        android:src="@drawable/medium_res_part_wheel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.189" />
 
     <ImageView
         android:layout_width="20dp"
