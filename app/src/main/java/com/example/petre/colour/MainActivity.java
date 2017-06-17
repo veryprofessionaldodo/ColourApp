@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
@@ -24,7 +25,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private View touchView;
-    private ImageView circle;
+    private ImageView circle, colorBar;
     private Bitmap bitmap;
     private Square square;
     private boolean hasClickedOnRing = false;
@@ -66,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         int uiOptions = View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
         touchView.setSystemUiVisibility(uiOptions);
         circle = (ImageView) findViewById(R.id.circle);
+        colorBar = (ImageView) findViewById(R.id.color_bar);
 
         SCALE = touchView.getContext().getResources().getDisplayMetrics().density;
 
@@ -88,9 +90,14 @@ public class MainActivity extends AppCompatActivity {
 
                 float delta_x = event.getX() - pixelWidth / 2.0f;
                 float delta_y = event.getY() - .458f * pixelHeight;
-                System.out.println(delta_x + " " + delta_y);
-                System.out.println(pixelWidth / 2.0f + " " + .458f * pixelHeight);
                 float angle = (float) Math.atan2(delta_y, delta_x);
+
+                colorBar.setX(pixelWidth / 2.0f + dpsToPixels((Constants.WHEEL_DPS-5)/2.0f) * (float) Math.cos(angle) - Math.abs(colorBar.getWidth()/2 + colorBar.getWidth()/2 * (float)Math.cos(angle)));
+                colorBar.setY(.458f * pixelHeight +  dpsToPixels((Constants.WHEEL_DPS-5)/2.0f) * (float) Math.sin(angle) - Math.abs(colorBar.getHeight()/2 + colorBar.getWidth()/2 * (float)Math.sin(angle)));
+
+                System.out.println("X " + colorBar.getWidth()/2 * (float) Math.sin(-angle) + " Y " + colorBar.getHeight()/2 * (float) Math.cos(-angle) );
+
+                colorBar.setRotation(angle * 180 / (float) Math.PI);
 
                 if (event.getAction() == MotionEvent.ACTION_UP) {
                     hasClickedOnRing = false;
@@ -132,10 +139,7 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 /*
-Matrix matrix = new Matrix();
-imageView.setScaleType(ImageView.ScaleType.MATRIX);   //required
-matrix.postRotate((float) angle, pivotX, pivotY);
-imageView.setImageMatrix(matrix);
+
  */
 
 /*
