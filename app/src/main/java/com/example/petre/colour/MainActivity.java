@@ -88,29 +88,53 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 
-                float delta_x = event.getX() - pixelWidth / 2.0f;
-                float delta_y = event.getY() - .458f * pixelHeight;
-                float angle = (float) Math.atan2(delta_y, delta_x);
-
-                colorBar.setX(pixelWidth / 2.0f + dpsToPixels((Constants.WHEEL_DPS-5)/2.0f) * (float) Math.cos(angle) - Math.abs(colorBar.getWidth()/2 + colorBar.getWidth()/2 * (float)Math.cos(angle)));
-                colorBar.setY(.458f * pixelHeight +  dpsToPixels((Constants.WHEEL_DPS-5)/2.0f) * (float) Math.sin(angle) - Math.abs(colorBar.getHeight()/2 + colorBar.getWidth()/2 * (float)Math.sin(angle)));
-
-                System.out.println("X " + colorBar.getWidth()/2 * (float) Math.sin(-angle) + " Y " + colorBar.getHeight()/2 * (float) Math.cos(-angle) );
-
-                colorBar.setRotation(angle * 180 / (float) Math.PI);
+                float deltaX = event.getX() - pixelWidth / 2.0f;
+                float deltaY = event.getY() - .458f * pixelHeight;
+                float angle = (float) Math.atan2(deltaY, deltaX);
 
                 if (event.getAction() == MotionEvent.ACTION_UP) {
                     hasClickedOnRing = false;
                     hasClickedOnSquare = false;
 
                 } else {
-                    if (event.getY() > 10 || hasClickedOnRing) { // TODO Aqui é a imagem da roda
+                    if (((Math.abs(deltaX) < Math.abs(dpsToPixels(Constants.WHEEL_DPS/2) * Math.cos(angle)) &&  (Math.abs(deltaX) > Math.abs(dpsToPixels((Constants.WHEEL_DPS-Constants.COLOR_BAR_DPS*1.75f)/2) * Math.cos(angle))))
+                            || hasClickedOnRing) && !hasClickedOnSquare) {
                         handleChangeColor(event);
+
+                        float x = pixelWidth / 2.0f + dpsToPixels((Constants.WHEEL_DPS-5)/2.0f) * (float) Math.cos(angle)
+                                - Math.abs(colorBar.getWidth()/2 + colorBar.getWidth()/2 * (float)Math.cos(angle));
+                        float y = .458f * pixelHeight +  dpsToPixels((Constants.WHEEL_DPS-5)/2.0f) * (float) Math.sin(angle)
+                                - Math.abs(colorBar.getHeight()/2 + colorBar.getWidth()/2 * (float)Math.sin(angle));
+
+                        colorBar.setX(x);
+                        colorBar.setY(y);
+                        colorBar.setRotation(angle * 180 / (float) Math.PI);
+
                         hasClickedOnRing = true;
-                    } else if (event.getX() > 10) { // TODO Aqui é a imagem do quadrado
+                        hasClickedOnSquare = false;
+                    } else if ((Math.abs(deltaX) < dpsToPixels(Constants.SQUARE_DPS/2) && Math.abs(deltaY) < dpsToPixels(Constants.SQUARE_DPS/2)) || hasClickedOnSquare ) {
+                        float tmpX = event.getX() - dpsToPixels(Constants.CIRCLE_DPS/2);
+                        float tmpY = event.getY() - dpsToPixels(Constants.CIRCLE_DPS/2);
+
+                        if (deltaX < -dpsToPixels(Constants.SQUARE_DPS/2))
+                            tmpX = pixelWidth / 2.0f - dpsToPixels(Constants.SQUARE_DPS/2 + Constants.CIRCLE_DPS/2) ;
+                        else if (deltaX > dpsToPixels(Constants.SQUARE_DPS/2))
+                            tmpX = pixelWidth / 2.0f + dpsToPixels(Constants.SQUARE_DPS/2 - Constants.CIRCLE_DPS/2) ;
+
+                        if (deltaY < -dpsToPixels(Constants.SQUARE_DPS/2))
+                            tmpY = .458f * pixelHeight - dpsToPixels(Constants.SQUARE_DPS/2 + Constants.CIRCLE_DPS/2) ;
+                        else if (deltaY > dpsToPixels(Constants.SQUARE_DPS/2))
+                            tmpY = .458f * pixelHeight + dpsToPixels(Constants.SQUARE_DPS/2 - Constants.CIRCLE_DPS/2) ;
+
+                        circle.setX(tmpX);
+                        circle.setY(tmpY);
+
                         hasClickedOnSquare = true;
+                        hasClickedOnRing = false;
                     }
+
                 }
+
                 return true;
             }
 
@@ -122,8 +146,7 @@ public class MainActivity extends AppCompatActivity {
     public void handleChangeColor(MotionEvent event) {
         bitmap = touchView.getDrawingCache();
 
-        circle.setY(event.getY() - dpsToPixels(Constants.CIRCLE_DPS/2));
-        circle.setX(event.getX() - dpsToPixels(Constants.CIRCLE_DPS/2));
+
 
         int pixel = bitmap.getPixel((int) event.getX(), (int) event.getY());
 
@@ -144,7 +167,6 @@ public class MainActivity extends AppCompatActivity {
 
 /*
  TODO LIST :
-    TODO COORDENADAS NA RODA
-    TODO COORDENADAS NO QUADRADO
+    TODO ALTERAR SPRITE DE QUADRADO PARA ALGO EM QUE POSSA TER MAIS PRECISÃO
     TODO PROBLEMA NO NEXUS 6, PROVAVELMENTE XXXHDPI DEMASIADO PEQUENO
  */
