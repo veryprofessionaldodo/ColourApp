@@ -4,5 +4,4 @@
     <dimen name = "square">87dp</dimen>
     <dimen name = "circle">15dp</dimen>
     <dimen name = "color">22.5dp</dimen>
-
 </resources>

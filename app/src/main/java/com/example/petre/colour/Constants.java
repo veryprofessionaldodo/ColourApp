@@ -1,12 +1,7 @@
 package com.example.petre.colour;
 
-import android.content.Context;
 import android.content.res.Resources;
-import android.view.View;
-
-/**
- * Created by petre on 17/06/2017.
- */
+import android.widget.Toast;
 
 public class Constants {
 
@@ -17,10 +12,9 @@ public class Constants {
 
 
     public Constants(Resources r) {
-        CIRCLE_DPS = r.getDimension(R.dimen.circle);
-        WHEEL_DPS = r.getDimension(R.dimen.part_wheel);
-        SQUARE_DPS = r.getDimension(R.dimen.square);
-        COLOR_BAR_DPS = r.getDimension(R.dimen.color);
-        System.out.println(CIRCLE_DPS + " " +  WHEEL_DPS + " " + SQUARE_DPS + " " + COLOR_BAR_DPS);
+        CIRCLE_DPS = r.getDimension(R.dimen.circle)/r.getDisplayMetrics().density;
+        WHEEL_DPS = r.getDimension(R.dimen.part_wheel)/r.getDisplayMetrics().density;
+        SQUARE_DPS = r.getDimension(R.dimen.square)/r.getDisplayMetrics().density;
+        COLOR_BAR_DPS = r.getDimension(R.dimen.color)/r.getDisplayMetrics().density;
     }
 }

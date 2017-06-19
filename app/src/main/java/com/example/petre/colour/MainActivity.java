@@ -35,11 +35,6 @@ public class MainActivity extends AppCompatActivity {
     private boolean hasClickedOnSquare = false;
     private int pixelWidth, pixelHeight;
 
-    public static float CIRCLE_DPS;
-    public static float WHEEL_DPS;
-    public static float SQUARE_DPS;
-    public static float COLOR_BAR_DPS;
-
     private float SCALE;
     int widthCircleMax;
     int heightCircleMax;
@@ -62,9 +57,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setVariables() {
-        System.out.println("merda");
         Constants constants =  new Constants(getResources());
-        System.out.println("merda");
+        Toast.makeText(getApplicationContext(), Constants.CIRCLE_DPS + " " +  Constants.WHEEL_DPS + " " +
+                Constants.SQUARE_DPS + " " + Constants.COLOR_BAR_DPS, Toast.LENGTH_LONG).show();
 
         ImageView background = (ImageView) findViewById(R.id.background);
         background.setScaleType(ImageView.ScaleType.FIT_XY);
