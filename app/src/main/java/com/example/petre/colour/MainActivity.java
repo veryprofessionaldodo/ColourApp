@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     public void setVariables() {
         Constants constants =  new Constants(getResources());
         Toast.makeText(getApplicationContext(), Constants.CIRCLE_DPS + " " +  Constants.WHEEL_DPS + " " +
-                Constants.SQUARE_DPS + " " + Constants.COLOR_BAR_DPS, Toast.LENGTH_LONG).show();
+                Constants.SQUARE_DPS + " " + Constants.COLOR_BAR_DPS + " " + getResources().getDisplayMetrics().density, Toast.LENGTH_LONG).show();
 
         ImageView background = (ImageView) findViewById(R.id.background);
         background.setScaleType(ImageView.ScaleType.FIT_XY);

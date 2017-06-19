@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name = "part_wheel">180dp</dimen>
+    <dimen name = "square">87dp</dimen>
+    <dimen name = "circle">15dp</dimen>
+    <dimen name = "color">22.5dp</dimen>
+</resources>
