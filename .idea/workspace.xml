@@ -23,10 +23,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e10bf395-68c1-4805-a300-aaec2bcaa7f0" name="Default" comment="PROBLEMA FUCKING SOLVED">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/values-normal-ldpi/dimen.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/values-normal-xhdpi/dimen.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/values-small-hdpi/dimen.xlm.xml" />
+    <list default="true" id="e10bf395-68c1-4805-a300-aaec2bcaa7f0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" />
@@ -34,15 +31,15 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/color_bar.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/color_bar.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/color_bar.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/color_bar.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/color_bar.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/color_bar.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/color_bar.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/color_bar.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/color_bar.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/color_bar.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/color_bar.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/color_bar.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/background.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/background.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/background.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/background.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/background.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/background.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/background.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/background.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/background.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/background.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/background.png" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/background.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/petre/colour/Constants.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/petre/colour/Constants.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/petre/colour/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/petre/colour/MainActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-small/acitivity_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-small/acitivity_main.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
     </list>
     <ignored path="Colour.iws" />
@@ -95,11 +92,11 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/petre/colour/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="163" column="0" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
+            <state relative-caret-position="387">
+              <caret line="175" column="48" selection-start-line="175" selection-start-column="48" selection-end-line="175" selection-end-column="48" />
               <folding>
-                <element signature="e#3287#6808#0" expanded="true" />
-                <element signature="e#6807#6808#0" expanded="true" />
+                <element signature="e#3045#4209#0" expanded="true" />
+                <element signature="e#4208#4209#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -111,8 +108,21 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="469">
-              <caret line="57" column="4" selection-start-line="57" selection-start-column="4" selection-end-line="57" selection-end-column="4" />
+            <state relative-caret-position="269">
+              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="acitivity_main.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-small/acitivity_main.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="67" column="39" selection-start-line="67" selection-start-column="39" selection-end-line="67" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -1982,7 +1992,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values-mdpi/dimens.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-ldpi/dimen.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-mdpi/dimen.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout-small/acitivity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-small-ldpi/dimen.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-small-mdpi/dimen.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/petre/colour/Constants.java" />
@@ -1990,6 +1999,7 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values-normal-ldpi/dimen.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-xhdpi/dimen.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-normal-xhdpi/dimen.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout-small/acitivity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/petre/colour/MainActivity.java" />
       </list>
@@ -2099,6 +2109,62 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Colour" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Colour" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Colour" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Colour" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout-small" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2538,7 +2604,14 @@
       <option name="project" value="LOCAL" />
       <updated>1497897554267</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Circulo perfeito, começar a tratar de esquema de cores complementares&#10;">
+      <created>1497966240178</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1497966240178</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2546,7 +2619,7 @@
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850778" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32764506" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2628,7 +2701,8 @@
     <MESSAGE value="Inicio de testes em multiplas resoluções" />
     <MESSAGE value="Multiplas resoluções melhoradas" />
     <MESSAGE value="PROBLEMA FUCKING SOLVED" />
-    <option name="LAST_COMMIT_MESSAGE" value="PROBLEMA FUCKING SOLVED" />
+    <MESSAGE value="Circulo perfeito, começar a tratar de esquema de cores complementares&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Circulo perfeito, começar a tratar de esquema de cores complementares&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2661,8 +2735,8 @@
         <state relative-caret-position="323">
           <caret line="29" column="26" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
           <folding>
-            <element signature="e#3287#6808#0" expanded="true" />
-            <element signature="e#6807#6808#0" expanded="true" />
+            <element signature="e#3045#4209#0" expanded="true" />
+            <element signature="e#4208#4209#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2680,8 +2754,8 @@
         <state relative-caret-position="340">
           <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
           <folding>
-            <element signature="e#3287#6808#0" expanded="true" />
-            <element signature="e#6807#6808#0" expanded="true" />
+            <element signature="e#3045#4209#0" expanded="true" />
+            <element signature="e#4208#4209#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2702,8 +2776,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#3287#6808#0" expanded="true" />
-            <element signature="e#6807#6808#0" expanded="true" />
+            <element signature="e#3045#4209#0" expanded="true" />
+            <element signature="e#4208#4209#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2724,8 +2798,8 @@
         <state relative-caret-position="238">
           <caret line="19" column="43" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
           <folding>
-            <element signature="e#3287#6808#0" expanded="true" />
-            <element signature="e#6807#6808#0" expanded="true" />
+            <element signature="e#3045#4209#0" expanded="true" />
+            <element signature="e#4208#4209#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2746,8 +2820,8 @@
         <state relative-caret-position="238">
           <caret line="19" column="43" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
           <folding>
-            <element signature="e#3287#6808#0" expanded="true" />
-            <element signature="e#6807#6808#0" expanded="true" />
+            <element signature="e#3045#4209#0" expanded="true" />
+            <element signature="e#4208#4209#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2768,8 +2842,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#3287#6808#0" expanded="true" />
-            <element signature="e#6807#6808#0" expanded="true" />
+            <element signature="e#3045#4209#0" expanded="true" />
+            <element signature="e#4208#4209#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2790,8 +2864,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#3287#6808#0" expanded="true" />
-            <element signature="e#6807#6808#0" expanded="true" />
+            <element signature="e#3045#4209#0" expanded="true" />
+            <element signature="e#4208#4209#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2812,8 +2886,8 @@
         <state relative-caret-position="357">
           <caret line="25" column="19" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
           <folding>
-            <element signature="e#3287#6808#0" expanded="true" />
-            <element signature="e#6807#6808#0" expanded="true" />
+            <element signature="e#3045#4209#0" expanded="true" />
+            <element signature="e#4208#4209#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2834,8 +2908,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#3287#6808#0" expanded="true" />
-            <element signature="e#6807#6808#0" expanded="true" />
+            <element signature="e#3045#4209#0" expanded="true" />
+            <element signature="e#4208#4209#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2987,17 +3061,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-small/acitivity_main.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="61" column="27" selection-start-line="61" selection-start-column="27" selection-end-line="65" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/petre/colour/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -3011,24 +3074,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-small/acitivity_main.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="67" column="39" selection-start-line="67" selection-start-column="39" selection-end-line="67" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="57" column="4" selection-start-line="57" selection-start-column="4" selection-end-line="57" selection-end-column="4" />
+        <state relative-caret-position="269">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/petre/colour/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="163" column="0" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
+        <state relative-caret-position="387">
+          <caret line="175" column="48" selection-start-line="175" selection-start-column="48" selection-end-line="175" selection-end-column="48" />
           <folding>
-            <element signature="e#3287#6808#0" expanded="true" />
-            <element signature="e#6807#6808#0" expanded="true" />
+            <element signature="e#3045#4209#0" expanded="true" />
+            <element signature="e#4208#4209#0" expanded="true" />
           </folding>
         </state>
       </provider>

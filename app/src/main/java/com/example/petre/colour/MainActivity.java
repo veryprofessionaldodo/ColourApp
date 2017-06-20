@@ -30,12 +30,13 @@ import java.io.Console;
 public class MainActivity extends AppCompatActivity {
 
     private View touchView;
-    private ImageView circle, colorBar, outerWheel;
+    private ImageView circle, colorBar, outerWheel, shading;
     private Bitmap bitmap;
     private Square square;
     private boolean hasClickedOnRing = false;
     private boolean hasClickedOnSquare = false;
     private int pixelWidth, pixelHeight;
+    private float angle = 0;
 
     private float SCALE;
     float CENTER_WHEEL_X, CENTER_WHEEL_Y;
@@ -44,41 +45,38 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         setVariables();
-
         setTouchListener();
     }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
+        CENTER_WHEEL_X = pixelWidth / 2.0f;
         CENTER_WHEEL_Y = outerWheel.getTop() + dpsToPixels(Constants.WHEEL_DPS/2.0f);
-        ImageView precision = (ImageView) findViewById(R.id.precision);
-        circle.setX(CENTER_WHEEL_X);
-        circle.setY(CENTER_WHEEL_Y);
+        circle.setX(CENTER_WHEEL_X - Constants.CIRCLE_DPS/2.0f);
+        circle.setY(CENTER_WHEEL_Y - Constants.CIRCLE_DPS/2.0f);
+        handleChangeColor(angle);
     }
 
     public void setVariables() {
         Constants constants =  new Constants(getResources());
-       // Toast.makeText(getApplicationContext(), Constants.CIRCLE_DPS + " " +  Constants.WHEEL_DPS + " " +
-         //       Constants.SQUARE_DPS + " " + Constants.COLOR_BAR_DPS + " " + getResources().getDisplayMetrics().density, Toast.LENGTH_LONG).show();
+
+        touchView = findViewById(R.id.full);
+        touchView.setDrawingCacheEnabled(true);
+        touchView.buildDrawingCache();
+
+        circle = (ImageView) findViewById(R.id.circle);
+        colorBar = (ImageView) findViewById(R.id.color_bar);
+        square = (Square) findViewById(R.id.square_color);
+        outerWheel = (ImageView) findViewById(R.id.outer_wheel);
+
 
         ImageView background = (ImageView) findViewById(R.id.background);
         background.setScaleType(ImageView.ScaleType.FIT_XY);
 
-        square = (Square) findViewById(R.id.square_color);
-        square.setColor(Color.BLUE);
-
-        touchView = findViewById(R.id.full);
-
-        touchView.setDrawingCacheEnabled(true);
-        touchView.buildDrawingCache();
-
         int uiOptions = View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
         touchView.setSystemUiVisibility(uiOptions);
-        circle = (ImageView) findViewById(R.id.circle);
-        colorBar = (ImageView) findViewById(R.id.color_bar);
 
         SCALE = touchView.getContext().getResources().getDisplayMetrics().density;
 
@@ -87,9 +85,6 @@ public class MainActivity extends AppCompatActivity {
         display.getSize(size);
         pixelWidth = size.x;
         pixelHeight = size.y;
-
-        outerWheel = (ImageView) findViewById(R.id.outer_wheel);
-        CENTER_WHEEL_X = pixelWidth / 2.0f;
     }
 
     public void setTouchListener() {
@@ -97,69 +92,67 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-
                 float deltaX = event.getX() - CENTER_WHEEL_X;
                 float deltaY = event.getY() - CENTER_WHEEL_Y;
-                float angle = (float) Math.atan2(deltaY, deltaX);
+                angle = (float) Math.atan2(deltaY, deltaX);
 
                 if (event.getAction() == MotionEvent.ACTION_UP) {
                     hasClickedOnRing = false;
                     hasClickedOnSquare = false;
-
                 } else {
                     if (((Math.abs(deltaX) < Math.abs(dpsToPixels(Constants.WHEEL_DPS/2) * Math.cos(angle)) &&  (Math.abs(deltaX) > Math.abs(dpsToPixels((Constants.WHEEL_DPS-Constants.COLOR_BAR_DPS*1.75f)/2) * Math.cos(angle))))
                             || hasClickedOnRing) && !hasClickedOnSquare) {
-
-                        float x = CENTER_WHEEL_X + dpsToPixels((Constants.WHEEL_DPS)/2.0f - Constants.COLOR_BAR_DPS/2.0f) * (float) Math.cos(angle)
-                                - dpsToPixels((Constants.COLOR_BAR_DPS)/2.0f);
-                        float y = CENTER_WHEEL_Y + dpsToPixels((Constants.WHEEL_DPS)/2.0f- Constants.COLOR_BAR_DPS/2.0f) * (float) Math.sin(angle)
-                                - dpsToPixels(Constants.COLOR_BAR_DPS/2.0f);
-
-                        colorBar.setX(x);
-                        colorBar.setY(y);
-                        colorBar.setRotation(angle * 180 / (float) Math.PI);
-
-
-
-                        handleChangeColor(CENTER_WHEEL_X + dpsToPixels((Constants.WHEEL_DPS)/2.0f - Constants.COLOR_BAR_DPS/2.0f) * (float) Math.cos(angle),
-                                 CENTER_WHEEL_Y + dpsToPixels((Constants.WHEEL_DPS)/2.0f- Constants.COLOR_BAR_DPS/2.0f) * (float) Math.sin(angle));
-                        //circle.setX(x + dpsToPixels(Constants.COLOR_BAR_DPS/2) * (float) Math.cos(angle) - dpsToPixels(Constants.CIRCLE_DPS/2));
-                        //circle.setY(y + dpsToPixels(Constants.COLOR_BAR_DPS/2) * (float) Math.sin(angle) - dpsToPixels(Constants.CIRCLE_DPS/2));
-
-                        hasClickedOnRing = true;
-                        hasClickedOnSquare = false;
+                        handleOuterWheel(angle);
                     } else if ((Math.abs(deltaX) < dpsToPixels(Constants.SQUARE_DPS/2) && Math.abs(deltaY) < dpsToPixels(Constants.SQUARE_DPS/2)) || hasClickedOnSquare ) {
-                        float tmpX = event.getX() - dpsToPixels(Constants.CIRCLE_DPS/2);
-                        float tmpY = event.getY() - dpsToPixels(Constants.CIRCLE_DPS/2);
-
-                        if (deltaX < -dpsToPixels(Constants.SQUARE_DPS/2))
-                            tmpX = CENTER_WHEEL_X - dpsToPixels(Constants.SQUARE_DPS/2 + Constants.CIRCLE_DPS/2) ;
-                        else if (deltaX > dpsToPixels(Constants.SQUARE_DPS/2))
-                            tmpX = CENTER_WHEEL_X + dpsToPixels(Constants.SQUARE_DPS/2 - Constants.CIRCLE_DPS/2) ;
-
-                        if (deltaY < -dpsToPixels(Constants.SQUARE_DPS/2))
-                            tmpY = CENTER_WHEEL_Y - dpsToPixels(Constants.SQUARE_DPS/2 + Constants.CIRCLE_DPS/2) ;
-                        else if (deltaY > dpsToPixels(Constants.SQUARE_DPS/2))
-                            tmpY = CENTER_WHEEL_Y + dpsToPixels(Constants.SQUARE_DPS/2 - Constants.CIRCLE_DPS/2) ;
-
-                        circle.setX(tmpX);
-                        circle.setY(tmpY);
-
-                        hasClickedOnSquare = true;
-                        hasClickedOnRing = false;
+                        handleSquare(event, deltaX, deltaY);
                     }
-
                 }
-
                 return true;
             }
-
-
         });
     }
 
-    public void handleChangeColor(float x, float y) {
+    private void handleOuterWheel(float angle) {
+        float x = CENTER_WHEEL_X + dpsToPixels((Constants.WHEEL_DPS)/2.0f - Constants.COLOR_BAR_DPS/2.0f) * (float) Math.cos(angle)
+                - dpsToPixels((Constants.COLOR_BAR_DPS)/2.0f);
+        float y = CENTER_WHEEL_Y + dpsToPixels((Constants.WHEEL_DPS)/2.0f- Constants.COLOR_BAR_DPS/2.0f) * (float) Math.sin(angle)
+                - dpsToPixels(Constants.COLOR_BAR_DPS/2.0f);
+
+        colorBar.setX(x);
+        colorBar.setY(y);
+        colorBar.setRotation(angle * 180 / (float) Math.PI);
+
+        handleChangeColor(angle);
+
+        hasClickedOnRing = true;
+        hasClickedOnSquare = false;
+    }
+
+    private void handleSquare(MotionEvent event, float deltaX, float deltaY) {
+        float tmpX = event.getX() - dpsToPixels(Constants.CIRCLE_DPS/2);
+        float tmpY = event.getY() - dpsToPixels(Constants.CIRCLE_DPS/2);
+
+        if (deltaX < -dpsToPixels(Constants.SQUARE_DPS/2))
+            tmpX = CENTER_WHEEL_X - dpsToPixels(Constants.SQUARE_DPS/2 + Constants.CIRCLE_DPS/2) ;
+        else if (deltaX > dpsToPixels(Constants.SQUARE_DPS/2))
+            tmpX = CENTER_WHEEL_X + dpsToPixels(Constants.SQUARE_DPS/2 - Constants.CIRCLE_DPS/2) ;
+
+        if (deltaY < -dpsToPixels(Constants.SQUARE_DPS/2))
+            tmpY = CENTER_WHEEL_Y - dpsToPixels(Constants.SQUARE_DPS/2 + Constants.CIRCLE_DPS/2) ;
+        else if (deltaY > dpsToPixels(Constants.SQUARE_DPS/2))
+            tmpY = CENTER_WHEEL_Y + dpsToPixels(Constants.SQUARE_DPS/2 - Constants.CIRCLE_DPS/2) ;
+
+        circle.setX(tmpX);
+        circle.setY(tmpY);
+
+        hasClickedOnSquare = true;
+        hasClickedOnRing = false;
+    }
+
+    public void handleChangeColor(float angle) {
         bitmap = touchView.getDrawingCache();
+        float x = CENTER_WHEEL_X + dpsToPixels((Constants.WHEEL_DPS)/2.0f - Constants.COLOR_BAR_DPS/2.0f) * (float) Math.cos(angle);
+        float y = CENTER_WHEEL_Y + dpsToPixels((Constants.WHEEL_DPS)/2.0f- Constants.COLOR_BAR_DPS/2.0f) * (float) Math.sin(angle);
         int pixel = bitmap.getPixel((int) x,(int) y);
 
         int r = Color.red(pixel);
@@ -176,5 +169,9 @@ public class MainActivity extends AppCompatActivity {
 }
 /*
  TODO LIST :
-    TODO ALTERAR SPRITE DE QUADRADO PARA ALGO EM QUE POSSA TER MAIS PRECISÃO
+    TODO Mudar Imagem do circulo para algo mais legível, e pouco controlo. Relembrar ideia de color picker que se mexe com o angulo
+    TODO Ângulo muda quando se põe em modo Landscape
+    TODO Fazer modo Landscape
+    TODO Apresentar esquemas complementares
+    TODO Fazer design de esquemas complementares
  */
