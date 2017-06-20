@@ -2,6 +2,7 @@
 <resources>
     <dimen name = "part_wheel">360dp</dimen>
     <dimen name = "square">174dp</dimen>
+    <dimen name = "inner_square">168dp</dimen>
     <dimen name = "circle">30dp</dimen>
     <dimen name = "color">45dp</dimen>
 </resources>

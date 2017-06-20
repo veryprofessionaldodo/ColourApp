@@ -24,8 +24,8 @@
         app:layout_constraintVertical_bias="0.507" />
 
     <com.example.petre.colour.Square
-        android:layout_width="@dimen/square"
-        android:layout_height="@dimen/square"
+        android:layout_width="@dimen/inner_square"
+        android:layout_height="@dimen/inner_square"
         android:id="@+id/square_color"
         app:layout_constraintTop_toTopOf="@+id/outer_wheel"
         android:layout_marginTop="8dp"

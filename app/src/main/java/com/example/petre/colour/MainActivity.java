@@ -14,6 +14,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.media.Image;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -32,11 +33,16 @@ public class MainActivity extends AppCompatActivity {
     private View touchView;
     private ImageView circle, colorBar, outerWheel, shading;
     private Bitmap bitmap;
-    private Square square;
+    private Square square, squareCenter, squareComplementaryLeft, squareComplementaryRight, squareComplementaryBottom;
     private boolean hasClickedOnRing = false;
     private boolean hasClickedOnSquare = false;
     private int pixelWidth, pixelHeight;
     private float angle = 0;
+
+    private float innerSquareMargin = 2.03f;
+
+
+    private int currComplementary = 0;
 
     private float SCALE;
     float CENTER_WHEEL_X, CENTER_WHEEL_Y;
@@ -56,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         CENTER_WHEEL_Y = outerWheel.getTop() + dpsToPixels(Constants.WHEEL_DPS/2.0f);
         circle.setX(CENTER_WHEEL_X - Constants.CIRCLE_DPS/2.0f);
         circle.setY(CENTER_WHEEL_Y - Constants.CIRCLE_DPS/2.0f);
+        squareCenter = (Square) findViewById(R.id.complementary_color_center);
         handleChangeColor(angle);
     }
 
@@ -85,6 +92,13 @@ public class MainActivity extends AppCompatActivity {
         display.getSize(size);
         pixelWidth = size.x;
         pixelHeight = size.y;
+
+       //
+
+        /*LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.acitivity_main, null);
+
+        ConstraintLayout item = (ConstraintLayout) view.findViewById(R.id.full);*/
     }
 
     public void setTouchListener() {
@@ -132,24 +146,32 @@ public class MainActivity extends AppCompatActivity {
         float tmpX = event.getX() - dpsToPixels(Constants.CIRCLE_DPS/2);
         float tmpY = event.getY() - dpsToPixels(Constants.CIRCLE_DPS/2);
 
-        if (deltaX < -dpsToPixels(Constants.SQUARE_DPS/2))
-            tmpX = CENTER_WHEEL_X - dpsToPixels(Constants.SQUARE_DPS/2 + Constants.CIRCLE_DPS/2) ;
-        else if (deltaX > dpsToPixels(Constants.SQUARE_DPS/2))
-            tmpX = CENTER_WHEEL_X + dpsToPixels(Constants.SQUARE_DPS/2 - Constants.CIRCLE_DPS/2) ;
+        if (deltaX < -dpsToPixels(Constants.INNER_SQUARE_DPS/innerSquareMargin))
+            tmpX = CENTER_WHEEL_X - dpsToPixels(Constants.INNER_SQUARE_DPS/innerSquareMargin + Constants.CIRCLE_DPS/2) ;
+        else if (deltaX > dpsToPixels(Constants.INNER_SQUARE_DPS/innerSquareMargin))
+            tmpX = CENTER_WHEEL_X + dpsToPixels(Constants.INNER_SQUARE_DPS/innerSquareMargin - Constants.CIRCLE_DPS/2) ;
 
-        if (deltaY < -dpsToPixels(Constants.SQUARE_DPS/2))
-            tmpY = CENTER_WHEEL_Y - dpsToPixels(Constants.SQUARE_DPS/2 + Constants.CIRCLE_DPS/2) ;
-        else if (deltaY > dpsToPixels(Constants.SQUARE_DPS/2))
-            tmpY = CENTER_WHEEL_Y + dpsToPixels(Constants.SQUARE_DPS/2 - Constants.CIRCLE_DPS/2) ;
+        if (deltaY < -dpsToPixels(Constants.INNER_SQUARE_DPS/innerSquareMargin))
+            tmpY = CENTER_WHEEL_Y - dpsToPixels(Constants.INNER_SQUARE_DPS/innerSquareMargin + Constants.CIRCLE_DPS/2) ;
+        else if (deltaY > dpsToPixels(Constants.INNER_SQUARE_DPS/innerSquareMargin))
+            tmpY = CENTER_WHEEL_Y + dpsToPixels(Constants.INNER_SQUARE_DPS/innerSquareMargin - Constants.CIRCLE_DPS/2);
+
 
         circle.setX(tmpX);
         circle.setY(tmpY);
+
+        squareCenter.setColor(getPreciseColor());
 
         hasClickedOnSquare = true;
         hasClickedOnRing = false;
     }
 
     public void handleChangeColor(float angle) {
+        square.setColor(getColorAngle(angle));
+        squareCenter.setColor(getPreciseColor());
+    }
+
+    private int getColorAngle(float angle) {
         bitmap = touchView.getDrawingCache();
         float x = CENTER_WHEEL_X + dpsToPixels((Constants.WHEEL_DPS)/2.0f - Constants.COLOR_BAR_DPS/2.0f) * (float) Math.cos(angle);
         float y = CENTER_WHEEL_Y + dpsToPixels((Constants.WHEEL_DPS)/2.0f- Constants.COLOR_BAR_DPS/2.0f) * (float) Math.sin(angle);
@@ -159,11 +181,30 @@ public class MainActivity extends AppCompatActivity {
         int g = Color.green(pixel);
         int b = Color.blue(pixel);
 
-        square.setColor(Color.rgb(r, g, b));
+        int color = Color.rgb(r,g,b);
+        return color;
+    }
+
+    private int getPreciseColor() {
+        bitmap = touchView.getDrawingCache();
+        float x = circle.getX()+ dpsToPixels(Constants.CIRCLE_DPS/2.0f);
+        float y = circle.getY()+ dpsToPixels(Constants.CIRCLE_DPS/2.0f);
+        int pixel = bitmap.getPixel((int) x,(int) y);
+
+        int r = Color.red(pixel);
+        int g = Color.green(pixel);
+        int b = Color.blue(pixel);
+
+        int color = Color.rgb(r,g,b);
+        return color;
     }
 
     public int dpsToPixels(float dps) {
         return (int) (dps * SCALE + 0.5f);
+    }
+
+    public void handleComplementaryColors() {
+
     }
 
 }
@@ -174,4 +215,11 @@ public class MainActivity extends AppCompatActivity {
     TODO Fazer modo Landscape
     TODO Apresentar esquemas complementares
     TODO Fazer design de esquemas complementares
+ */
+
+/*
+  BUGS CONHECIDOS :
+    XLARGE MDPI Problemas nas cores
+
+
  */
