@@ -1,15 +1,12 @@
 package com.example.petre.colour;
 
 import android.content.res.Resources;
-import android.widget.Toast;
 
 public class Constants {
-
     public static float CIRCLE_DPS;
     public static float WHEEL_DPS;
     public static float SQUARE_DPS;
     public static float COLOR_BAR_DPS;
-
 
     public Constants(Resources r) {
         CIRCLE_DPS = r.getDimension(R.dimen.circle)/r.getDisplayMetrics().density;

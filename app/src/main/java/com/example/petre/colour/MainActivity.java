@@ -13,11 +13,13 @@ import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.Image;
 import android.provider.ContactsContract;
+import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Display;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -28,7 +30,7 @@ import java.io.Console;
 public class MainActivity extends AppCompatActivity {
 
     private View touchView;
-    private ImageView circle, colorBar;
+    private ImageView circle, colorBar, outerWheel;
     private Bitmap bitmap;
     private Square square;
     private boolean hasClickedOnRing = false;
@@ -36,8 +38,6 @@ public class MainActivity extends AppCompatActivity {
     private int pixelWidth, pixelHeight;
 
     private float SCALE;
-    int widthCircleMax;
-    int heightCircleMax;
     float CENTER_WHEEL_X, CENTER_WHEEL_Y;
 
     @Override
@@ -47,19 +47,22 @@ public class MainActivity extends AppCompatActivity {
 
         setVariables();
 
-        circle.setY(CENTER_WHEEL_Y / 2 - dpsToPixels(Constants.CIRCLE_DPS/2));
-        circle.setX(.5f * pixelWidth / 2 - dpsToPixels(Constants.CIRCLE_DPS/2));
-
-        //ImageView img = (ImageView) findViewById(R.id.square_outline);
-        //System.out.println("X " + img.getX() + (float)img.getWidth()/2.0f + " Y " + img.getY() + (float) img.getHeight()/2.0f);
-
         setTouchListener();
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        CENTER_WHEEL_Y = outerWheel.getTop() + dpsToPixels(Constants.WHEEL_DPS/2.0f);
+        ImageView precision = (ImageView) findViewById(R.id.precision);
+        circle.setX(CENTER_WHEEL_X);
+        circle.setY(CENTER_WHEEL_Y);
     }
 
     public void setVariables() {
         Constants constants =  new Constants(getResources());
-        Toast.makeText(getApplicationContext(), Constants.CIRCLE_DPS + " " +  Constants.WHEEL_DPS + " " +
-                Constants.SQUARE_DPS + " " + Constants.COLOR_BAR_DPS + " " + getResources().getDisplayMetrics().density, Toast.LENGTH_LONG).show();
+       // Toast.makeText(getApplicationContext(), Constants.CIRCLE_DPS + " " +  Constants.WHEEL_DPS + " " +
+         //       Constants.SQUARE_DPS + " " + Constants.COLOR_BAR_DPS + " " + getResources().getDisplayMetrics().density, Toast.LENGTH_LONG).show();
 
         ImageView background = (ImageView) findViewById(R.id.background);
         background.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -85,14 +88,8 @@ public class MainActivity extends AppCompatActivity {
         pixelWidth = size.x;
         pixelHeight = size.y;
 
-
-
-        widthCircleMax = dpsToPixels(Constants.WHEEL_DPS);
-        heightCircleMax = dpsToPixels(Constants.WHEEL_DPS);
-
+        outerWheel = (ImageView) findViewById(R.id.outer_wheel);
         CENTER_WHEEL_X = pixelWidth / 2.0f;
-        CENTER_WHEEL_Y = .434f * pixelHeight;
-
     }
 
     public void setTouchListener() {
@@ -113,24 +110,21 @@ public class MainActivity extends AppCompatActivity {
                     if (((Math.abs(deltaX) < Math.abs(dpsToPixels(Constants.WHEEL_DPS/2) * Math.cos(angle)) &&  (Math.abs(deltaX) > Math.abs(dpsToPixels((Constants.WHEEL_DPS-Constants.COLOR_BAR_DPS*1.75f)/2) * Math.cos(angle))))
                             || hasClickedOnRing) && !hasClickedOnSquare) {
 
-                        float x = CENTER_WHEEL_X + dpsToPixels((Constants.WHEEL_DPS)/2.0f) * (float) Math.cos(angle)
-                                - Math.abs(colorBar.getWidth()/2 + colorBar.getWidth()/2 * (float)Math.cos(angle));
-                        float y = CENTER_WHEEL_Y +  dpsToPixels((Constants.WHEEL_DPS)/2.0f) * (float) Math.sin(angle)
-                                - Math.abs(colorBar.getHeight()/2 + colorBar.getWidth()/2 * (float)Math.sin(angle));
+                        float x = CENTER_WHEEL_X + dpsToPixels((Constants.WHEEL_DPS)/2.0f - Constants.COLOR_BAR_DPS/2.0f) * (float) Math.cos(angle)
+                                - dpsToPixels((Constants.COLOR_BAR_DPS)/2.0f);
+                        float y = CENTER_WHEEL_Y + dpsToPixels((Constants.WHEEL_DPS)/2.0f- Constants.COLOR_BAR_DPS/2.0f) * (float) Math.sin(angle)
+                                - dpsToPixels(Constants.COLOR_BAR_DPS/2.0f);
 
                         colorBar.setX(x);
                         colorBar.setY(y);
                         colorBar.setRotation(angle * 180 / (float) Math.PI);
 
 
-                        ImageView precision = (ImageView) findViewById(R.id.precision);
 
-                        handleChangeColor((int)CENTER_WHEEL_X + (int) (dpsToPixels(Constants.WHEEL_DPS/2 - 14.4f)* Math.cos(angle) - dpsToPixels(Constants.CIRCLE_DPS/2)),
-                                (int)CENTER_WHEEL_Y + (int)(dpsToPixels(Constants.WHEEL_DPS/2 - 14.4f)* Math.sin(angle) - dpsToPixels(Constants.CIRCLE_DPS/2)));
+                        handleChangeColor(CENTER_WHEEL_X + dpsToPixels((Constants.WHEEL_DPS)/2.0f - Constants.COLOR_BAR_DPS/2.0f) * (float) Math.cos(angle),
+                                 CENTER_WHEEL_Y + dpsToPixels((Constants.WHEEL_DPS)/2.0f- Constants.COLOR_BAR_DPS/2.0f) * (float) Math.sin(angle));
                         //circle.setX(x + dpsToPixels(Constants.COLOR_BAR_DPS/2) * (float) Math.cos(angle) - dpsToPixels(Constants.CIRCLE_DPS/2));
                         //circle.setY(y + dpsToPixels(Constants.COLOR_BAR_DPS/2) * (float) Math.sin(angle) - dpsToPixels(Constants.CIRCLE_DPS/2));
-                        //precision.setX((int)CENTER_WHEEL_X + (int) (dpsToPixels(Constants.WHEEL_DPS/2 - 14.4f)* Math.cos(angle) - dpsToPixels(Constants.CIRCLE_DPS/2)));
-                        //precision.setY((int)CENTER_WHEEL_Y + (int)(dpsToPixels(Constants.WHEEL_DPS/2 - 14.4f)* Math.sin(angle) - dpsToPixels(Constants.CIRCLE_DPS/2)));
 
                         hasClickedOnRing = true;
                         hasClickedOnSquare = false;
@@ -162,15 +156,11 @@ public class MainActivity extends AppCompatActivity {
 
 
         });
-
     }
 
-    public void handleChangeColor(int x, int y) {
+    public void handleChangeColor(float x, float y) {
         bitmap = touchView.getDrawingCache();
-
-
-
-        int pixel = bitmap.getPixel(x,y);
+        int pixel = bitmap.getPixel((int) x,(int) y);
 
         int r = Color.red(pixel);
         int g = Color.green(pixel);
@@ -183,16 +173,8 @@ public class MainActivity extends AppCompatActivity {
         return (int) (dps * SCALE + 0.5f);
     }
 
-
-
-
 }
-/*
-
- */
-
 /*
  TODO LIST :
     TODO ALTERAR SPRITE DE QUADRADO PARA ALGO EM QUE POSSA TER MAIS PRECISÃO
-    TODO PROBLEMA NO NEXUS 6, PROVAVELMENTE XXXHDPI DEMASIADO PEQUENO
  */
